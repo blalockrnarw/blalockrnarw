@@ -1,0 +1,33 @@
+try
+				{
+					Conn.Open();
+ 
+					myDr = Cmd.ExecuteReader();
+					ArrayList rowdata = new ArrayList();
+					int _fieldcount=myDr.FieldCount;
+					Object[] colvalues = new Object[_fieldcount];
+					for(int i=0;i<_fieldcount;i++)
+					{
+						colvalues[i]=myDr.GetName(i);
+					}
+					if(hastitle)
+						rowdata.Add(colvalues);
+					while(myDr.Read())
+					{
+						Object[] values = new Object[_fieldcount];
+						myDr.GetValues(values);
+						rowdata.Add(values);
+						RowsCount++;
+					}
+					myDr.Close();
+					object[,] rv=new object[rowdata.Count,_fieldcount];
+					for(int i=0;i<rowdata.Count;i++)
+					{
+						for(int j=0;j<_fieldcount;j++)
+						{
+							rv[i,j]=((object[])rowdata[i])[j];
+						}
+					}
+					return rv;
+ 
+				}
