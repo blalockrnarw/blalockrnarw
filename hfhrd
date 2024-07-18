@@ -1,0 +1,21 @@
+import cv2
+import pytesseract
+from PIL import Image
+import requests
+from io import BytesIO
+ 
+def solve_captcha(image_url):
+    response = requests.get(image_url)
+    img = Image.open(BytesIO(response.content))
+    img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+    
+    # 假设验证码在图片上的位置 (x, y, w, h)
+    cropped_img = img[y:y+h, x:x+w]
+    
+    # 使用Tesseract进行OCR识别
+    captcha_text = pytesseract.image_to_string(cropped_img)
+    return captcha_text
+ 
+# 调用示例
+captcha_text = solve_captcha('http://example.com/captcha.jpg')
+print(f"Solved captcha: {captcha_text}")
